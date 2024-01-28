@@ -478,8 +478,8 @@ MonoBehaviour:
   GeneratePrefab: 0
   PrefabFolder: Assets/Art/Prefab
   ArchitectureFullTypeName: 
-  attackRange: 6
-  attackDamage: 6
+  attackRange: 3
+  attackDamage: 1
 --- !u!1 &1283966434
 GameObject:
   m_ObjectHideFlags: 0

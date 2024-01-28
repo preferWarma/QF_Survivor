@@ -52,6 +52,13 @@ namespace UI
 				TimeText.text = $"游戏时间: {m:D2}:{s:D2}";
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
+			// 敌人数量注册相关
+			Global.EnemyCount.RegisterWithInitValue(cnt =>
+			{
+				EnemyCountText.text = $"敌人数量: {cnt}";
+			}).UnRegisterWhenGameObjectDestroyed(this);
+			
+			// 游戏结束相关
 			var enemyGenerator = FindObjectOfType<EnemyGenerator>();
 			Global.GameLastTime.Register(lastTime =>
 			{

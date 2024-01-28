@@ -1,4 +1,5 @@
 using QFramework;
+using UI;
 using UnityEngine;
 
 namespace Game
@@ -25,6 +26,7 @@ namespace Game
 			
 			// 添加到全局敌人列表
 			Global.Enemies.Add(this);
+			Global.EnemyCount.Value = Global.Enemies.Count;
 		}
 
 		private void Update()
@@ -68,6 +70,7 @@ namespace Game
 		{
 			// 从全局敌人列表中移除
 			Global.Enemies.Remove(this);
+			Global.EnemyCount.Value = Global.Enemies.Count;
 		}
 	}
 }

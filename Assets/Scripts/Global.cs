@@ -12,6 +12,8 @@ public static class Global
     
     // 敌人列表
     public static readonly List<Enemy> Enemies = new();
+    // 敌人数量, 用于UI显示
+    public static readonly BindableProperty<int> EnemyCount = new(0);
     // 经验值
     public static readonly BindableProperty<int> Exp = new(0);
     // 玩家等级
