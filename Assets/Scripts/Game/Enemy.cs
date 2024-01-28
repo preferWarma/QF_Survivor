@@ -1,5 +1,4 @@
 using QFramework;
-using UI;
 using UnityEngine;
 
 namespace Game
@@ -7,8 +6,9 @@ namespace Game
 	public partial class Enemy : ViewController
 	{
 		public float speed = 3f;
-		
-		private int _hp = 3;
+		public int maxHp = 3;
+
+		private int _hp;
 		
 		// 引用部分
 		private Player _player;
@@ -16,10 +16,15 @@ namespace Game
 
 		private void Start()
 		{
-			_hp = 3;
+			// 初始化属性
+			_hp = maxHp;
 			
+			// 获取引用
 			_player = FindObjectOfType<Player>();
 			_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+			
+			// 添加到全局敌人列表
+			Global.Enemies.Add(this);
 		}
 
 		private void Update()
@@ -34,13 +39,13 @@ namespace Game
 			transform.Translate(direction * (speed * Time.deltaTime));
 		}
 
-		public void GetHurt()
+		public void GetHurt(int damage = 1)
 		{
-			_hp--;
-			if (_hp == 0)
+			_hp -= damage;
+			if (_hp <= 0)
 			{
 				Destroy(gameObject);
-				UIKit.OpenPanel<UIGamePass>();
+				Global.Exp.Value++;
 			}
 			
 			// 简易受伤动画
@@ -57,6 +62,12 @@ namespace Game
 			if (_player == null) return float.MaxValue;
 			return (transform.position - _player.transform.position).magnitude;
 			
+		}
+
+		private void OnDestroy()
+		{
+			// 从全局敌人列表中移除
+			Global.Enemies.Remove(this);
 		}
 	}
 }

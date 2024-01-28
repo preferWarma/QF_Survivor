@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using QFramework;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +13,8 @@ namespace UI
 		{
 			mData = uiData as UIGamePassData ?? new UIGamePassData();
 			// please add init code here
+			
+			// Action事件注册
 			ActionKit.OnUpdate.Register(() =>
 			{
 				if (Input.GetKeyDown(KeyCode.Space))
@@ -26,6 +27,7 @@ namespace UI
 		
 		protected override void OnOpen(IUIData uiData = null)
 		{
+			Time.timeScale = 0f;
 		}
 		
 		protected override void OnShow()
@@ -38,6 +40,8 @@ namespace UI
 		
 		protected override void OnClose()
 		{
+			Time.timeScale = 1f;
+			Global.ResetAllData();
 		}
 	}
 }

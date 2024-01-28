@@ -25,6 +25,7 @@ namespace UI
 		
 		protected override void OnOpen(IUIData uiData = null)
 		{
+			Time.timeScale = 0f;
 		}
 		
 		protected override void OnShow()
@@ -37,6 +38,8 @@ namespace UI
 		
 		protected override void OnClose()
 		{
+			Time.timeScale = 1f;
+			Global.ResetAllData();
 		}
 	}
 }

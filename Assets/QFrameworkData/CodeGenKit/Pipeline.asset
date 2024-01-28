@@ -19,11 +19,11 @@ MonoBehaviour:
     From: 0
     NameToFullName: []
     BindInfos: []
-    ScriptsFolder: Assets/Scripts/Game/Ability
-    ClassName: SampleAbility
-    Namespace: Game.Ability
-    MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace Game.Ability\r\n{\r\n\tpublic
-      partial class SampleAbility : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+    ScriptsFolder: Assets/Scripts/Game
+    ClassName: EnemyGenerator
+    Namespace: Game
+    MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace Game\r\n{\r\n\tpublic
+      partial class EnemyGenerator : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:bfc3421f-f5f1-4d5a-a244-160a4e40b433\r\nusing UnityEngine;\r\n\r\nnamespace
-      Game.Ability\r\n{\r\n\tpublic partial class SampleAbility\r\n\t{\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:818824d2-27ff-4341-947e-3456470fcd9d\r\nusing UnityEngine;\r\n\r\nnamespace
+      Game\r\n{\r\n\tpublic partial class EnemyGenerator\r\n\t{\r\n\r\n\t}\r\n}\r\n"
