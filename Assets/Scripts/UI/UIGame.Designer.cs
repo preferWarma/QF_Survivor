@@ -5,7 +5,7 @@ using QFramework;
 
 namespace UI
 {
-	// Generate Id:796b0910-943c-4357-901f-e36761869251
+	// Generate Id:d3b92404-b144-4dda-9515-ee009da0cdee
 	public partial class UIGame
 	{
 		public const string Name = "UIGame";
@@ -18,6 +18,8 @@ namespace UI
 		public UnityEngine.UI.Text TimeText;
 		[SerializeField]
 		public UnityEngine.UI.Text EnemyCountText;
+		[SerializeField]
+		public UnityEngine.UI.Text MoneyText;
 		[SerializeField]
 		public RectTransform UpgradeBtns;
 		[SerializeField]
@@ -33,6 +35,7 @@ namespace UI
 			ExpText = null;
 			TimeText = null;
 			EnemyCountText = null;
+			MoneyText = null;
 			UpgradeBtns = null;
 			SimpleAbility_Frequency = null;
 			SimpleAbility_Power = null;

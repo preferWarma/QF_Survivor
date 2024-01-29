@@ -1,5 +1,4 @@
 using QFramework;
-using UI;
 using UnityEngine;
 
 namespace Game
@@ -19,11 +18,6 @@ namespace Game
 		private void Update()
 		{
 			Move();
-		}
-
-		private void OnTriggerEnter2D(Collider2D other)
-		{
-			UIKit.OpenPanel<UIGameOver>();
 		}
 
 		// 简单的移动， 基于Rigidbody2D

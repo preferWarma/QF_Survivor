@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using QFramework;
 
@@ -18,13 +19,9 @@ namespace Game.Ability
 			{
 				_timer = 0f;
 				// 范围内敌人受伤
-				foreach (var enemy in Global.Enemies)
+				foreach (var enemy in Global.Enemies.Where(enemy => enemy != null && enemy.DistanceToPlayer() < attackRange))
 				{
-					if (enemy == null) continue;
-					if (enemy.DistanceToPlayer() < attackRange)
-					{
-						enemy.GetHurt(attackDamage);
-					}
+					enemy.GetHurt(attackDamage);
 				}
 			}
 		}
@@ -48,7 +45,7 @@ namespace Game.Ability
 
 		public void Reset()
 		{
-			attackRange = 3f;
+			attackRange = 3.5f;
 			attackDamage = 1;
 		}
 

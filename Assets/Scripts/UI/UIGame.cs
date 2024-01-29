@@ -18,12 +18,12 @@ namespace UI
 			// 经验注册相关
 			Global.Exp.RegisterWithInitValue(exp =>
 			{
-				ExpText.text = $"经验值: {exp}";
-				if (exp >= 5)
+				if (exp >= Global.ExpNextLevelNeed())
 				{
+					Global.Exp.Value -= Global.ExpNextLevelNeed();
 					Global.Level.Value++;
-					Global.Exp.Value -= 5;
 				}
+				ExpText.text = $"经验值: {exp}/{Global.ExpNextLevelNeed()}";
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
 			// 等级注册相关
@@ -67,6 +67,14 @@ namespace UI
 				{
 					UIKit.OpenPanel<UIGamePass>();
 				}
+			}).UnRegisterWhenGameObjectDestroyed(this);
+
+			// 永久数据的简单存储
+			Global.Money.Value = PlayerPrefs.GetInt(nameof(Global.Money), 0);
+			Global.Money.RegisterWithInitValue(money =>
+			{
+				MoneyText.text = $"金币: {money}";
+				PlayerPrefs.SetInt(nameof(Global.Money), Global.Money.Value);
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
 			// 升级按钮绑定监听

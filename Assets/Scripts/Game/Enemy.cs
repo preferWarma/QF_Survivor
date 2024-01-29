@@ -50,7 +50,8 @@ namespace Game
 			if (_hp <= 0)
 			{
 				Destroy(gameObject);
-				Global.Exp.Value++;
+				// 掉落经验值
+				DroppedItemManager.Instance.GenerateItem(transform.position);
 			}
 			
 			// 简易受伤动画
@@ -70,6 +71,8 @@ namespace Game
 			return (transform.position - _player.transform.position).magnitude;
 			
 		}
+		
+		
 
 		private void OnDestroy()
 		{

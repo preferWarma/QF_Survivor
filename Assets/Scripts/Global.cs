@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public static class Global
 {
-    
+    [Header("死亡后会重置的数据")]
     // 敌人列表
     public static readonly List<Enemy> Enemies = new();
     // 敌人数量, 用于UI显示
@@ -21,6 +21,13 @@ public static class Global
     // 游戏持续时间
     public static readonly BindableProperty<float> GameLastTime = new(0f);
     
+    [Header("永久保存的数据")]
+    // 金币数量
+    public static readonly BindableProperty<int> Money = new(0);
+    
+    /// <summary>
+    /// 重置非永久保存的数据
+    /// </summary>
     public static void ResetAllData()
     {
         // 自身重置
@@ -32,6 +39,11 @@ public static class Global
         
         // 能力重置
         Object.FindObjectOfType<SampleAbility>().Reset();
+    }
+
+    public static int ExpNextLevelNeed()
+    {
+        return Level.Value * 5;
     }
     
 }
