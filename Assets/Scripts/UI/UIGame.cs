@@ -68,13 +68,12 @@ namespace UI
 					UIKit.OpenPanel<UIGamePass>();
 				}
 			}).UnRegisterWhenGameObjectDestroyed(this);
-
-			// 永久数据的简单存储
-			Global.Money.Value = PlayerPrefs.GetInt(nameof(Global.Money), 0);
+			
+			// 金币注册相关
 			Global.Money.RegisterWithInitValue(money =>
 			{
-				MoneyText.text = $"金币: {money}";
-				PlayerPrefs.SetInt(nameof(Global.Money), Global.Money.Value);
+				// 使用富文本
+				MoneyText.text = $"金币: <color=yellow>{money}</color>";
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
 			// 升级按钮绑定监听

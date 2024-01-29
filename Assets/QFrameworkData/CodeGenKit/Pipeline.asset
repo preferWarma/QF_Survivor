@@ -18,19 +18,12 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos:
-    - TypeName: CircleCollider2D
-      PathToRoot: ExpObj
-      MemberName: ExpObj
-    - TypeName: CircleCollider2D
-      PathToRoot: MoneyObj
-      MemberName: MoneyObj
+    BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: DroppedItemManager
+    ClassName: GameStartController
     Namespace: Game
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace Game\r\n{\r\n\tpublic
-      partial class DroppedItemManager : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class GameStartController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:44f63018-fc5f-4b18-b10e-ebfedd03ccd5\r\nusing UnityEngine;\r\n\r\nnamespace
-      Game\r\n{\r\n\tpublic partial class DroppedItemManager\r\n\t{\r\n\r\n\t\tpublic
-      CircleCollider2D ExpObj;\r\n\r\n\t\tpublic CircleCollider2D MoneyObj;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:14bbb4b4-6924-48e0-a618-e72ea3e0ae16\r\nusing UnityEngine;\r\n\r\nnamespace
+      Game\r\n{\r\n\tpublic partial class GameStartController\r\n\t{\r\n\r\n\t}\r\n}\r\n"

@@ -20,7 +20,7 @@ namespace UI
 				if (Input.GetKeyDown(KeyCode.Space))
 				{
 					CloseSelf();
-					SceneManager.LoadScene("SampleScene");
+					SceneManager.LoadScene("GameStart");
 				}
 			}).UnRegisterWhenGameObjectDestroyed(this);
 		}

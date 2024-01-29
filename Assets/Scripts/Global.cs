@@ -24,6 +24,33 @@ public static class Global
     [Header("永久保存的数据")]
     // 金币数量
     public static readonly BindableProperty<int> Money = new(0);
+    // 经验掉落概率
+    public static readonly BindableProperty<float> ExpDropRate = new(0.5f);
+    // 金币掉落概率
+    public static readonly BindableProperty<float> MoneyDropRate = new(0.2f);
+
+    [RuntimeInitializeOnLoadMethod]
+    public static void AutoInit()
+    {
+        // 永久数据的简单存储
+        Money.Value = PlayerPrefs.GetInt(nameof(Money), 0);
+        Money.Register(money =>
+        {
+            PlayerPrefs.SetInt(nameof(Money), Money.Value);
+        });
+        
+        ExpDropRate.Value = PlayerPrefs.GetFloat(nameof(ExpDropRate), 0.5f);
+        ExpDropRate.Register(rate =>
+        {
+            PlayerPrefs.SetFloat(nameof(ExpDropRate), ExpDropRate.Value);
+        });
+        
+        MoneyDropRate.Value = PlayerPrefs.GetFloat(nameof(MoneyDropRate), 0.2f);
+        MoneyDropRate.Register(rate =>
+        {
+            PlayerPrefs.SetFloat(nameof(MoneyDropRate), MoneyDropRate.Value);
+        });
+    }
     
     /// <summary>
     /// 重置非永久保存的数据
