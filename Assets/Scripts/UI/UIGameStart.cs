@@ -1,4 +1,6 @@
+using DG.Tweening;
 using QFramework;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace UI
@@ -19,6 +21,18 @@ namespace UI
 				CloseSelf();
 				SceneManager.LoadScene("Game");
 			});
+			
+			// 打开/关闭商城按钮注册
+			BtnUseMoney.onClick.AddListener(() =>
+			{
+				DoCloseOrOpen(MoneyUsePanel.gameObject, true);	// 基于DoTween的打开动画
+			});
+			
+			BtnCloseMoneyPanel.onClick.AddListener(() =>
+			{
+				DoCloseOrOpen(MoneyUsePanel.gameObject, false);	// 基于DoTween的关闭动画
+			});
+			
 			
 			// 升级按钮注册
 			Btn_ExpDropRateUp.onClick.AddListener(() =>
@@ -48,6 +62,31 @@ namespace UI
 					Btn_MoneyDropRateUp.Hide();
 				}
 			}).UnRegisterWhenGameObjectDestroyed(this);
+		}
+
+		/// <summary>
+		/// 使用DoTween实现界面的打开和关闭动画
+		/// </summary>
+		/// <param name="obj">显示或隐藏的对象</param>
+		/// <param name="isOpen">打开(true),关闭(false)</param>
+		/// <param name="duration">动画时间</param>
+		private void DoCloseOrOpen(GameObject obj, bool isOpen, float duration = 0.3f)
+		{
+			if (isOpen)
+			{
+				// 先设置初始状态
+				obj.transform.localScale = Vector3.zero;
+				
+				obj.transform.DOScale(Vector3.one, duration)
+					.SetEase(Ease.OutCubic)
+					.OnStart(() => obj.SetActive(true));
+			}
+			else
+			{
+				obj.transform.DOScale(Vector3.zero, duration)
+					.SetEase(Ease.InQuad)
+					.OnComplete(() => obj.SetActive(false));
+			}
 		}
 		
 		protected override void OnOpen(IUIData uiData = null)

@@ -5,7 +5,7 @@ using QFramework;
 
 namespace UI
 {
-	// Generate Id:d8a6e771-0667-4ec3-a57f-a0cadc99bb29
+	// Generate Id:72fab9d4-0ed5-42e7-b1a1-d6510e7ab721
 	public partial class UIGameStart
 	{
 		public const string Name = "UIGameStart";
@@ -13,7 +13,11 @@ namespace UI
 		[SerializeField]
 		public UnityEngine.UI.Button BtnStartGame;
 		[SerializeField]
+		public UnityEngine.UI.Button BtnUseMoney;
+		[SerializeField]
 		public RectTransform MoneyUsePanel;
+		[SerializeField]
+		public UnityEngine.UI.Button BtnCloseMoneyPanel;
 		[SerializeField]
 		public UnityEngine.UI.Button Btn_ExpDropRateUp;
 		[SerializeField]
@@ -26,7 +30,9 @@ namespace UI
 		protected override void ClearUIComponents()
 		{
 			BtnStartGame = null;
+			BtnUseMoney = null;
 			MoneyUsePanel = null;
+			BtnCloseMoneyPanel = null;
 			Btn_ExpDropRateUp = null;
 			Btn_MoneyDropRateUp = null;
 			MoneyRemainText = null;
