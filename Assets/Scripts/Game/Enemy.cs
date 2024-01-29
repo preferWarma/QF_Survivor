@@ -10,6 +10,7 @@ namespace Game
 		public int maxHp = 3;
 
 		private int _hp;
+		private bool _isHurt = false;	// 是否处于受击状态
 		
 		// 引用部分
 		private Player _player;
@@ -43,6 +44,8 @@ namespace Game
 
 		public void GetHurt(int damage = 1)
 		{
+			if (_isHurt) return;	// 给一个受击的无敌帧用于显示受击动画
+			
 			_hp -= damage;
 			if (_hp <= 0)
 			{
@@ -51,12 +54,14 @@ namespace Game
 			}
 			
 			// 简易受伤动画
+			_isHurt = true;
 			_spriteRenderer.color = Color.red;
 			ActionKit.Delay(0.2f, () =>
 				{
 					if (_spriteRenderer == null) return;
 					_spriteRenderer.color = Color.white;
-				}).StartGlobal();
+					_isHurt = false;
+				}).Start(this);
 		}
 		
 		public float DistanceToPlayer()

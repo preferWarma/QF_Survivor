@@ -25,6 +25,7 @@ public static class Global
     {
         // 自身重置
         Enemies.Clear();
+        EnemyCount.SetValueWithoutEvent(0);
         Exp.SetValueWithoutEvent(0);
         Level.SetValueWithoutEvent(1);
         GameLastTime.SetValueWithoutEvent(0f);

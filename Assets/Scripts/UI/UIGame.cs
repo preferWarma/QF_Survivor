@@ -35,7 +35,7 @@ namespace UI
 			Global.Level.Register(lv =>
 			{
 				Time.timeScale = 0f;
-				UpgradeBtn_SimpleAbility.Show();
+				UpgradeBtns.Show();
 
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
@@ -70,11 +70,18 @@ namespace UI
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
 			// 升级按钮绑定监听
-			UpgradeBtn_SimpleAbility.onClick.AddListener(() =>
+			SimpleAbility_Power.onClick.AddListener(() =>
 			{
-				FindObjectOfType<SampleAbility>().Upgrade();
+				FindObjectOfType<SampleAbility>().Upgrade(1);
 				Time.timeScale = 1f;
-				UpgradeBtn_SimpleAbility.Hide();
+				UpgradeBtns.Hide();
+			});
+			
+			SimpleAbility_Frequency.onClick.AddListener(() =>
+			{
+				FindObjectOfType<SampleAbility>().Upgrade(2);
+				Time.timeScale = 1f;
+				UpgradeBtns.Hide();
 			});
 			
 			// Action事件添加
