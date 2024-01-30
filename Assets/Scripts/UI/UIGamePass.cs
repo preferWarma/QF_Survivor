@@ -28,6 +28,7 @@ namespace UI
 		protected override void OnOpen(IUIData uiData = null)
 		{
 			Time.timeScale = 0f;
+			AudioKit.PlaySound("GamePass");
 		}
 		
 		protected override void OnShow()

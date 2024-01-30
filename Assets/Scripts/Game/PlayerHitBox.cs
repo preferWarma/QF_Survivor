@@ -12,6 +12,7 @@ namespace Game
             {
                 // TODO: 玩家受伤
                 UIKit.OpenPanel<UIGameOver>();
+                AudioKit.PlaySound("PlayerDie");
             }
         }
     }

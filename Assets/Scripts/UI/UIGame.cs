@@ -35,6 +35,7 @@ namespace UI
 			Global.Level.Register(lv =>
 			{
 				Time.timeScale = 0f;
+				AudioKit.PlaySound("LevelUp");
 				UpgradeBtns.Show();
 
 			}).UnRegisterWhenGameObjectDestroyed(this);
@@ -60,10 +61,10 @@ namespace UI
 			
 			// 游戏结束相关
 			var enemyGenerator = FindObjectOfType<EnemyGenerator>();
-			Global.GameLastTime.Register(lastTime =>
+			Global.EnemyCount.Register(enemyCount =>
 			{
 				// 当最后一波敌人死亡时, 游戏结束
-				if (enemyGenerator.CurrentEnemyWave == null && Global.Enemies.Count == 0)
+				if (enemyGenerator.CurrentEnemyWave == null && enemyCount == 0)
 				{
 					UIKit.OpenPanel<UIGamePass>();
 				}

@@ -7,8 +7,10 @@ using UnityEngine;
 /// <summary>
 /// 全局配置中心
 /// </summary>
-public static class Global
+public class Global : Architecture<Global>
 {
+    #region Model层
+    
     [Header("死亡后会重置的数据")]
     // 敌人列表
     public static readonly List<Enemy> Enemies = new();
@@ -28,10 +30,14 @@ public static class Global
     public static readonly BindableProperty<float> ExpDropRate = new(0.5f);
     // 金币掉落概率
     public static readonly BindableProperty<float> MoneyDropRate = new(0.2f);
+    
+    #endregion
 
     [RuntimeInitializeOnLoadMethod]
     public static void AutoInit()
     {
+        ResKit.Init();
+        
         // 永久数据的简单存储
         Money.Value = PlayerPrefs.GetInt(nameof(Money), 0);
         Money.Register(money =>
@@ -65,12 +71,16 @@ public static class Global
         GameLastTime.SetValueWithoutEvent(0f);
         
         // 能力重置
-        Object.FindObjectOfType<SampleAbility>().Reset();
+        Object.FindObjectOfType<SampleAbility>(true).Reset();
     }
 
     public static int ExpNextLevelNeed()
     {
         return Level.Value * 5;
     }
-    
+
+    protected override void Init()
+    {
+        
+    }
 }

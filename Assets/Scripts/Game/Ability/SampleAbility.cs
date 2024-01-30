@@ -10,7 +10,7 @@ namespace Game.Ability
 		[Tooltip("攻击力")] public int attackDamage = 1;
 		[Tooltip("攻击频率")] public float attackFrequency = 1.5f;
 		
-		private float _timer = 0f;
+		private float _timer;
 		
 		private void Update()
 		{
@@ -41,6 +41,7 @@ namespace Game.Ability
 					attackFrequency *= 0.8f;
 					break;
 			}
+			AudioKit.PlaySound("SampleAbilityUp");
 		}
 
 		public void Reset()

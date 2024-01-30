@@ -1,5 +1,4 @@
 using QFramework;
-using UI;
 using UnityEngine;
 
 namespace Game
@@ -10,7 +9,7 @@ namespace Game
 		public int maxHp = 3;
 
 		private int _hp;
-		private bool _isHurt = false;	// 是否处于受击状态
+		private bool _isHurt;	// 是否处于受击状态
 		
 		// 引用部分
 		private Player _player;
@@ -47,10 +46,11 @@ namespace Game
 			if (_isHurt) return;	// 给一个受击的无敌帧用于显示受击动画
 			
 			_hp -= damage;
+			AudioKit.PlaySound("HitEnemy");
 			if (_hp <= 0)
 			{
 				Destroy(gameObject);
-				// 掉落经验值
+				// 掉落物品
 				DroppedItemManager.Instance.GenerateItem(transform.position);
 			}
 			

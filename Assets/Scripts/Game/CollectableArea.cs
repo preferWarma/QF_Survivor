@@ -1,3 +1,4 @@
+using QFramework;
 using UnityEngine;
 
 namespace Game
@@ -12,11 +13,13 @@ namespace Game
             if (other.CompareTag("ExpObj"))
             {
                 Global.Exp.Value++;
+                AudioKit.PlaySound("GetExp");
                 Destroy(other.gameObject);
             }
             if (other.CompareTag("MoneyObj"))
             {
                 Global.Money.Value++;
+                AudioKit.PlaySound("GetCoin");
                 Destroy(other.gameObject);
             }
         }
