@@ -41,9 +41,14 @@ namespace Game
 			transform.Translate(direction * (speed * Time.deltaTime));
 		}
 
-		public void GetHurt(int damage = 1)
+		/// <summary>
+		/// 对敌人造成伤害
+		/// </summary>
+		/// <param name="damage">伤害值</param>
+		/// <param name="force">是否忽略受伤无敌帧并强制造成伤害</param>
+		public void GetHurt(int damage = 1, bool force = false)
 		{
-			if (_isHurt) return;	// 给一个受击的无敌帧用于显示受击动画
+			if (_isHurt && !force) return;	// 给一个受击的无敌帧用于显示受击动画
 			
 			_hp -= damage;
 			AudioKit.PlaySound("HitEnemy");

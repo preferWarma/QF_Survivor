@@ -18,12 +18,30 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos: []
+    BindInfos:
+    - TypeName: UnityEngine.Transform
+      PathToRoot: ExpObj
+      MemberName: ExpObj
+    - TypeName: UnityEngine.Transform
+      PathToRoot: MoneyObj
+      MemberName: MoneyObj
+    - TypeName: UnityEngine.Transform
+      PathToRoot: RecoverHpObj
+      MemberName: RecoverHpObj
+    - TypeName: UnityEngine.Transform
+      PathToRoot: BombObj
+      MemberName: BombObj
+    - TypeName: UnityEngine.Transform
+      PathToRoot: AutoCollectObj
+      MemberName: AutoCollectObj
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: GameStartController
+    ClassName: DroppedItemManager
     Namespace: Game
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace Game\r\n{\r\n\tpublic
-      partial class GameStartController : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class DroppedItemManager : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:14bbb4b4-6924-48e0-a618-e72ea3e0ae16\r\nusing UnityEngine;\r\n\r\nnamespace
-      Game\r\n{\r\n\tpublic partial class GameStartController\r\n\t{\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:80a4bb68-8078-4d34-aade-2dc3eda09f9b\r\nusing UnityEngine;\r\n\r\nnamespace
+      Game\r\n{\r\n\tpublic partial class DroppedItemManager\r\n\t{\r\n\r\n\t\tpublic
+      UnityEngine.Transform ExpObj;\r\n\r\n\t\tpublic UnityEngine.Transform MoneyObj;\r\n\r\n\t\tpublic
+      UnityEngine.Transform RecoverHpObj;\r\n\r\n\t\tpublic UnityEngine.Transform
+      BombObj;\r\n\r\n\t\tpublic UnityEngine.Transform AutoCollectObj;\r\n\r\n\t}\r\n}\r\n"

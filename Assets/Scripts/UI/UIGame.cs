@@ -59,7 +59,7 @@ namespace UI
 				EnemyCountText.text = $"敌人数量: {cnt}";
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
-			// 游戏结束相关
+			// 游戏通关相关
 			var enemyGenerator = FindObjectOfType<EnemyGenerator>();
 			Global.EnemyCount.Register(enemyCount =>
 			{
@@ -75,6 +75,13 @@ namespace UI
 			{
 				// 使用富文本
 				MoneyText.text = $"金币: <color=yellow>{money}</color>";
+			}).UnRegisterWhenGameObjectDestroyed(this);
+			
+			// 玩家生命值注册相关
+			Global.Hp.RegisterWithInitValue(hp =>
+			{
+				HpText.text = hp > 1 ? $"生命值: <color=green>{hp}</color>/{Player.MaxHp}" 
+					: $"生命值: <color=red>{hp}</color>/{Player.MaxHp}";
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
 			// 升级按钮绑定监听

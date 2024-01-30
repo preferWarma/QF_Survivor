@@ -1,4 +1,4 @@
-// Generate Id:44f63018-fc5f-4b18-b10e-ebfedd03ccd5
+// Generate Id:80a4bb68-8078-4d34-aade-2dc3eda09f9b
 using UnityEngine;
 
 namespace Game
@@ -6,9 +6,15 @@ namespace Game
 	public partial class DroppedItemManager
 	{
 
-		public CircleCollider2D ExpObj;
+		public UnityEngine.Transform ExpObj;
 
-		public CircleCollider2D MoneyObj;
+		public UnityEngine.Transform MoneyObj;
+
+		public UnityEngine.Transform RecoverHpObj;
+
+		public UnityEngine.Transform BombObj;
+
+		public UnityEngine.Transform AutoCollectObj;
 
 	}
 }

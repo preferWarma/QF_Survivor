@@ -5,14 +5,16 @@ namespace Game
 {
 	public partial class Player : ViewController
 	{
-		public float speed = 5f;
+		public float speed = 7f;
+		public static int MaxHp = 3;
 
 		private Rigidbody2D _rigidbody2D;
 
 		private void Start()
 		{
-			// ResKit.Init();
 			_rigidbody2D = GetComponent<Rigidbody2D>();
+			
+			Global.Hp.Value = MaxHp;
 		}
 
 		private void Update()

@@ -20,6 +20,8 @@ public class Global : Architecture<Global>
     public static readonly BindableProperty<int> Exp = new(0);
     // 玩家等级
     public static readonly BindableProperty<int> Level = new(1);
+    // 玩家生命值
+    public static readonly BindableProperty<int> Hp = new(Player.MaxHp);
     // 游戏持续时间
     public static readonly BindableProperty<float> GameLastTime = new(0f);
     
@@ -68,6 +70,7 @@ public class Global : Architecture<Global>
         EnemyCount.SetValueWithoutEvent(0);
         Exp.SetValueWithoutEvent(0);
         Level.SetValueWithoutEvent(1);
+        Hp.SetValueWithoutEvent(Player.MaxHp);
         GameLastTime.SetValueWithoutEvent(0f);
         
         // 能力重置
