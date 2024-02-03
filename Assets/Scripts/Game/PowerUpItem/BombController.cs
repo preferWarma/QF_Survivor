@@ -11,6 +11,7 @@ namespace Game.PowerUpItem
 			if (other.CompareTag("Player"))
 			{
 				// 爆炸
+				AudioKit.PlaySound("Bomb");
 				foreach (var enemy in Global.Enemies)
 				{
 					enemy.GetHurt(enemy.maxHp, true);

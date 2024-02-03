@@ -17,6 +17,8 @@ namespace Game.PowerUpItem
 			// Player接触时, 自动收集所有经验和金币
 			if (other.CompareTag("Player"))
 			{
+				AudioKit.PlaySound("AutoCollect");
+				
 				// 通过tag来找到所有经验值和金币
 				foreach (var expObj in GameObject.FindGameObjectsWithTag("ExpObj"))
 				{

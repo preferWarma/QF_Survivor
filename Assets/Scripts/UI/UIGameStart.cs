@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Game;
 using QFramework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,12 +40,21 @@ namespace UI
 			{
 				Global.ExpDropRate.Value += 0.05f;
 				Global.Money.Value -= 5;
+				AudioKit.PlaySound("AbilityUp");
 			});
 			
 			Btn_MoneyDropRateUp.onClick.AddListener(() =>
 			{
 				Global.MoneyDropRate.Value += 0.05f;
 				Global.Money.Value -= 5;
+				AudioKit.PlaySound("AbilityUp");
+			});
+			
+			Btn_MaxHpUp.onClick.AddListener(() =>
+			{
+				Player.MaxHp++;
+				Global.Money.Value -= 5;
+				AudioKit.PlaySound("AbilityUp");
 			});
 			
 			// 升级按钮的显示与隐藏, 金币数量显示

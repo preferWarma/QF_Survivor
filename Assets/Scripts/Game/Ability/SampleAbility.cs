@@ -41,7 +41,7 @@ namespace Game.Ability
 					attackFrequency *= 0.8f;
 					break;
 			}
-			AudioKit.PlaySound("SampleAbilityUp");
+			AudioKit.PlaySound("AbilityUp");
 		}
 
 		public void Reset()

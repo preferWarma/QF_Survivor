@@ -8,6 +8,7 @@ namespace Game
     /// </summary>
     public class CollectableArea : MonoBehaviour
     {
+        // 对简单逻辑的物品进行收集, 避免创建太多的脚本
         private void OnTriggerEnter2D(Collider2D other)
         {
             var otherTag = other.tag;

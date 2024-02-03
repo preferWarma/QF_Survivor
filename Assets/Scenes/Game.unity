@@ -365,7 +365,7 @@ MonoBehaviour:
   ArchitectureFullTypeName: 
   hpItemDropRate: 0.15
   bombItemDropRate: 0.1
-  autoCollectItemDropRate: 0.3
+  autoCollectItemDropRate: 0.1
   ExpObj: {fileID: 139128278}
   MoneyObj: {fileID: 726926093}
   RecoverHpObj: {fileID: 1041024862}

@@ -5,7 +5,7 @@ using QFramework;
 
 namespace UI
 {
-	// Generate Id:72fab9d4-0ed5-42e7-b1a1-d6510e7ab721
+	// Generate Id:1fc19431-c006-4de8-84eb-91fa3fc57476
 	public partial class UIGameStart
 	{
 		public const string Name = "UIGameStart";
@@ -17,13 +17,15 @@ namespace UI
 		[SerializeField]
 		public RectTransform MoneyUsePanel;
 		[SerializeField]
+		public UnityEngine.UI.Text MoneyRemainText;
+		[SerializeField]
 		public UnityEngine.UI.Button BtnCloseMoneyPanel;
 		[SerializeField]
 		public UnityEngine.UI.Button Btn_ExpDropRateUp;
 		[SerializeField]
 		public UnityEngine.UI.Button Btn_MoneyDropRateUp;
 		[SerializeField]
-		public UnityEngine.UI.Text MoneyRemainText;
+		public UnityEngine.UI.Button Btn_MaxHpUp;
 		
 		private UIGameStartData mPrivateData = null;
 		
@@ -32,10 +34,11 @@ namespace UI
 			BtnStartGame = null;
 			BtnUseMoney = null;
 			MoneyUsePanel = null;
+			MoneyRemainText = null;
 			BtnCloseMoneyPanel = null;
 			Btn_ExpDropRateUp = null;
 			Btn_MoneyDropRateUp = null;
-			MoneyRemainText = null;
+			Btn_MaxHpUp = null;
 			
 			mData = null;
 		}
