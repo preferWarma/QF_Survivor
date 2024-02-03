@@ -1,4 +1,5 @@
 using QFramework;
+using UI;
 using UnityEngine;
 
 namespace Game
@@ -68,6 +69,9 @@ namespace Game
 					_spriteRenderer.color = Color.white;
 					_isHurt = false;
 				}).Start(this);
+			
+			// 显示伤害飘字
+			FloatTextController.Play(FloatTextPoint.position, damage.ToString());
 		}
 		
 		public float DistanceToPlayer()

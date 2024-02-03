@@ -1,10 +1,12 @@
-// Generate Id:7850898e-9921-4030-aa3c-fb1133eb6a66
+// Generate Id:a7cd95d3-c726-4f55-9d36-dc862e26eccf
 using UnityEngine;
 
 namespace Game
 {
 	public partial class Enemy
 	{
+
+		public Transform FloatTextPoint;
 
 	}
 }
