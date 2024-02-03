@@ -21,7 +21,7 @@ public class Global : Architecture<Global>
     // 玩家等级
     public static readonly BindableProperty<int> Level = new(1);
     // 玩家生命值
-    public static readonly BindableProperty<int> Hp = new(Player.MaxHp);
+    public static readonly BindableProperty<int> Hp = new();
     // 游戏持续时间
     public static readonly BindableProperty<float> GameLastTime = new(0f);
     
@@ -32,6 +32,8 @@ public class Global : Architecture<Global>
     public static readonly BindableProperty<float> ExpDropRate = new(0.5f);
     // 金币掉落概率
     public static readonly BindableProperty<float> MoneyDropRate = new(0.2f);
+    // 玩家最大血量上限
+    public static readonly BindableProperty<int> MaxHp = new(3);
     
     #endregion
 
@@ -58,6 +60,11 @@ public class Global : Architecture<Global>
         {
             PlayerPrefs.SetFloat(nameof(MoneyDropRate), MoneyDropRate.Value);
         });
+        MaxHp.Value = PlayerPrefs.GetInt(nameof(MaxHp), 3);
+        MaxHp.Register(hp =>
+        {
+            PlayerPrefs.SetInt(nameof(MaxHp), MaxHp.Value);
+        });
     }
     
     /// <summary>
@@ -70,7 +77,7 @@ public class Global : Architecture<Global>
         EnemyCount.SetValueWithoutEvent(0);
         Exp.SetValueWithoutEvent(0);
         Level.SetValueWithoutEvent(1);
-        Hp.SetValueWithoutEvent(Player.MaxHp);
+        Hp.SetValueWithoutEvent(MaxHp.Value);
         GameLastTime.SetValueWithoutEvent(0f);
         
         // 能力重置

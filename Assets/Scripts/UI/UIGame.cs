@@ -80,8 +80,8 @@ namespace UI
 			// 玩家生命值注册相关
 			Global.Hp.RegisterWithInitValue(hp =>
 			{
-				HpText.text = hp > 1 ? $"生命值: <color=green>{hp}</color>/{Player.MaxHp}" 
-					: $"生命值: <color=red>{hp}</color>/{Player.MaxHp}";
+				HpText.text = hp > 1 ? $"生命值: <color=green>{hp}</color>/{Global.MaxHp}" 
+					: $"生命值: <color=red>{hp}</color>/{Global.MaxHp}";
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
 			// 升级按钮绑定监听

@@ -28,7 +28,7 @@ namespace Game
                     break;
                 
                 case "RecoverObj":
-                    Global.Hp.Value = Mathf.Min(Player.MaxHp, Global.Hp.Value + 1);
+                    Global.Hp.Value = Mathf.Min(Global.MaxHp.Value, Global.Hp.Value + 1);
                     AudioKit.PlaySound("RecoverHp");
                     Destroy(other.gameObject);
                     break;

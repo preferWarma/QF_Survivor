@@ -52,7 +52,7 @@ namespace UI
 			
 			Btn_MaxHpUp.onClick.AddListener(() =>
 			{
-				Player.MaxHp++;
+				Global.MaxHp.Value++;
 				Global.Money.Value -= 5;
 				AudioKit.PlaySound("AbilityUp");
 			});
