@@ -1,3 +1,4 @@
+using Lyf.ObjectPool;
 using QFramework;
 using UnityEngine;
 
@@ -18,19 +19,19 @@ namespace Game
                 case "ExpObj":
                     Global.Exp.Value++;
                     AudioKit.PlaySound("GetExp");
-                    Destroy(other.gameObject);
+                    ObjectPool.Instance.Recycle(other.gameObject);
                     break;
                 
                 case "MoneyObj":
                     Global.Money.Value++;
                     AudioKit.PlaySound("GetCoin");
-                    Destroy(other.gameObject);
+                    ObjectPool.Instance.Recycle(other.gameObject);
                     break;
                 
                 case "RecoverObj":
                     Global.Hp.Value = Mathf.Min(Global.MaxHp.Value, Global.Hp.Value + 1);
                     AudioKit.PlaySound("RecoverHp");
-                    Destroy(other.gameObject);
+                    ObjectPool.Instance.Recycle(other.gameObject);
                     break;
             }
         }

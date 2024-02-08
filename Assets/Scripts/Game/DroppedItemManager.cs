@@ -1,3 +1,4 @@
+using Lyf.ObjectPool;
 using QFramework;
 using UnityEngine;
 
@@ -44,9 +45,12 @@ namespace Game
 			// 在position附近的小圆内随机生成一个位置, 避免物品重叠过于严重
 			position += Random.insideUnitSphere * 0.7f;
 			
-			prefab.Instantiate()
-				.Position(position)
-				.Show();
+			// 使用对象池, 减小性能开销
+			ObjectPool.Instance.Allocate(prefab, obj =>
+			{
+				obj.Position(position)
+					.Show();
+			});
 		}
 
 		public void OnSingletonInit()

@@ -1,3 +1,4 @@
+using Lyf.ObjectPool;
 using QFramework;
 using UI;
 using UnityEngine;
@@ -55,7 +56,7 @@ namespace Game
 			AudioKit.PlaySound("HitEnemy");
 			if (_hp <= 0)
 			{
-				Destroy(gameObject);
+				ObjectPool.Instance.Recycle(gameObject);
 				// 掉落物品
 				DroppedItemManager.Instance.GenerateItem(transform.position);
 			}

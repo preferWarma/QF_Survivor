@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Lyf.ObjectPool;
 using UnityEngine;
 using QFramework;
 using Random = UnityEngine.Random;
@@ -30,7 +31,6 @@ namespace Game
 			}
 		}
 		
-
 		private void Update()
 		{
 			_generateTimer += Time.deltaTime;
@@ -58,10 +58,12 @@ namespace Game
 			var randomRadius = Random.Range(0, 360f) * Mathf.Deg2Rad;	// 0-360°的随机角度,并转换为弧度
 			var direction = new Vector3(Mathf.Cos(randomRadius), Mathf.Sin(randomRadius), 0f);	// 根据角度计算方向
 			var generatePosition = _player.transform.position +  direction * enemyGenerateDistance;	// 计算生成位置
-				
-			CurrentEnemyWave.enemyPrefab.Instantiate()
-				.Position(generatePosition)
-				.Show();
+			
+			ObjectPool.Instance.Allocate(CurrentEnemyWave.enemyPrefab, obj =>
+			{
+				obj.Position(generatePosition)
+					.Show();
+			});
 		}
 	}
 
