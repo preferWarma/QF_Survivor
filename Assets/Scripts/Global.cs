@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using Game;
 using Game.Ability;
+using Lyf.SaveSystem;
 using QFramework;
 using Systems.CoinUpgrade;
 using UnityEditor;
 using UnityEngine;
+using SaveType = Lyf.SaveSystem.SaveType;
 
 /// <summary>
 /// 全局配置中心
 /// </summary>
-public class Global : Architecture<Global>
+public class Global : Architecture<Global>, ISaveWithPlayerPrefs
 {
     #region Model层
     
@@ -38,36 +40,6 @@ public class Global : Architecture<Global>
     public static readonly BindableProperty<int> MaxHp = new(3);
     
     #endregion
-
-    [RuntimeInitializeOnLoadMethod]
-    public static void AutoInit()
-    {
-        ResKit.Init();
-        
-        // 永久数据的简单存储
-        Money.Value = PlayerPrefs.GetInt(nameof(Money), 0);
-        Money.Register(money =>
-        {
-            PlayerPrefs.SetInt(nameof(Money), Money.Value);
-        });
-        
-        ExpDropRate.Value = PlayerPrefs.GetFloat(nameof(ExpDropRate), 0.5f);
-        ExpDropRate.Register(rate =>
-        {
-            PlayerPrefs.SetFloat(nameof(ExpDropRate), ExpDropRate.Value);
-        });
-        
-        MoneyDropRate.Value = PlayerPrefs.GetFloat(nameof(MoneyDropRate), 0.2f);
-        MoneyDropRate.Register(rate =>
-        {
-            PlayerPrefs.SetFloat(nameof(MoneyDropRate), MoneyDropRate.Value);
-        });
-        MaxHp.Value = PlayerPrefs.GetInt(nameof(MaxHp), 3);
-        MaxHp.Register(hp =>
-        {
-            PlayerPrefs.SetInt(nameof(MaxHp), MaxHp.Value);
-        });
-    }
     
     /// <summary>
     /// 重置非永久保存的数据
@@ -94,6 +66,9 @@ public class Global : Architecture<Global>
     protected override void Init()
     {
         RegisterSystem(new CoinUpgradeSystem());
+        
+        // 注册存储系统
+        SaveManager.Instance.Register(this, SaveType.PlayerPrefs);
     }
     
     // 清除永久数据
@@ -102,4 +77,38 @@ public class Global : Architecture<Global>
     {
         PlayerPrefs.DeleteAll();
     }
+
+    #region 存储相关
+    public string SAVE_KEY => "Global";
+    public void SaveWithPlayerPrefs()
+    {
+        var data = new GlobalSaveData()
+        {
+            Money = Money.Value,
+            ExpDropRate = ExpDropRate.Value,
+            MoneyDropRate = MoneyDropRate.Value,
+            MaxHp = MaxHp.Value
+        };
+        SaveManager.SaveWithPlayerPrefs(SAVE_KEY, data);
+    }
+
+    public void LoadWithPlayerPrefs()
+    {
+        var data = SaveManager.LoadWithPlayerPrefs<GlobalSaveData>(SAVE_KEY);
+        if (data == null) return;
+        Money.SetValueWithoutEvent(data.Money);
+        ExpDropRate.SetValueWithoutEvent(data.ExpDropRate);
+        MoneyDropRate.SetValueWithoutEvent(data.MoneyDropRate);
+        MaxHp.SetValueWithoutEvent(data.MaxHp);
+    }
+    #endregion
+}
+
+// 需要存储的永久数据集
+public class GlobalSaveData
+{
+    public int Money;
+    public float ExpDropRate;
+    public float MoneyDropRate;
+    public int MaxHp;
 }

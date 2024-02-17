@@ -56,9 +56,10 @@ namespace Game
 			AudioKit.PlaySound("HitEnemy");
 			if (_hp <= 0)
 			{
-				ObjectPool.Instance.Recycle(gameObject);
 				// 掉落物品
 				DroppedItemManager.Instance.GenerateItem(transform.position);
+				// 死亡
+				Destroy(gameObject);
 			}
 			
 			// 简易受伤动画
@@ -82,9 +83,7 @@ namespace Game
 			
 		}
 		
-		
-
-		private void OnDisable()
+		private void OnDestroy()
 		{
 			// 从全局敌人列表中移除
 			Global.Enemies.Remove(this);

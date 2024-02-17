@@ -19,7 +19,8 @@ namespace Game.Ability
 			{
 				_timer = 0f;
 				// 范围内敌人受伤
-				foreach (var enemy in Global.Enemies.Where(enemy => enemy != null && enemy.DistanceToPlayer() < attackRange))
+				var enemies = Global.Enemies.Where(enemy => enemy != null && enemy.DistanceToPlayer() < attackRange);
+				foreach (var enemy in enemies)
 				{
 					enemy.GetHurt(attackDamage);
 				}

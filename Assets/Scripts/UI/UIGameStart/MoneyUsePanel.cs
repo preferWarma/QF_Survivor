@@ -26,11 +26,15 @@ namespace UI
 				upgradeItem.SetBtn(itemBtnObj);
 			}
 			
-			// 升级按钮的显示与隐藏, 金币数量显示
+			// 初始刷新一次
+			RefreshUpgradeBtn();
+			// 后续每次升级都刷新一次
+			CoinUpgradeSystem.OnSystemChanged.Register(RefreshUpgradeBtn).UnRegisterWhenGameObjectDestroyed(this);
+			
+			// 升级按钮是否可以点击, 金币数量显示
 			Global.Money.RegisterWithInitValue(money =>
 			{
 				MoneyRemainText.text = $"剩余金币: {money}";
-				
 				foreach (var item in this.GetSystem<CoinUpgradeSystem>().CoinUpgradeItems)
 				{
 					if (money < item.Cost)
@@ -51,6 +55,22 @@ namespace UI
 			{
 				UIAnimationController.DoClose(gameObject);
 			});
+		}
+
+		// 刷新升级按钮的显示与隐藏, 实现依赖关系
+		public void RefreshUpgradeBtn()
+		{
+			foreach (var item in this.GetSystem<CoinUpgradeSystem>().CoinUpgradeItems)
+			{
+				if (item.CanShow())
+				{
+					item.Btn.gameObject.Show();
+				}
+				else
+				{
+					item.Btn.gameObject.Hide();
+				}
+			}
 		}
 
 		protected override void OnBeforeDestroy()
