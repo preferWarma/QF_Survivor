@@ -84,7 +84,7 @@ namespace Game
 		
 		
 
-		private void OnDestroy()
+		private void OnDisable()
 		{
 			// 从全局敌人列表中移除
 			Global.Enemies.Remove(this);

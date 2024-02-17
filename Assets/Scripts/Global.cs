@@ -2,6 +2,8 @@
 using Game;
 using Game.Ability;
 using QFramework;
+using Systems.CoinUpgrade;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -91,6 +93,13 @@ public class Global : Architecture<Global>
 
     protected override void Init()
     {
-        
+        RegisterSystem(new CoinUpgradeSystem());
+    }
+    
+    // 清除永久数据
+    [MenuItem("Lyf/Reset PlayerPrefs")]
+    public static void ResetPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

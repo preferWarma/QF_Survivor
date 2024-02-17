@@ -1,3 +1,4 @@
+using Lyf.ObjectPool;
 using UnityEngine;
 using QFramework;
 
@@ -36,7 +37,7 @@ namespace Game.PowerUpItem
 						Collect(moneyObj);
 					}).UnRegisterWhenGameObjectDestroyed(moneyObj);
 				}
-				Destroy(gameObject);	// 使用完后销毁自身
+				ObjectPool.Instance.Recycle(gameObject); // 使用完后回收
 			}
 		}
 		

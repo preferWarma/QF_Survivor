@@ -1,3 +1,4 @@
+using Lyf.ObjectPool;
 using QFramework;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Game.PowerUpItem
 				{
 					enemy.GetHurt(enemy.maxHp, true);
 				}
-				Destroy(gameObject);	// 使用完后销毁自身
+				ObjectPool.Instance.Recycle(gameObject);
 			}
 		}
 	}

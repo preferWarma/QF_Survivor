@@ -1,5 +1,6 @@
 using Lyf.ObjectPool;
 using QFramework;
+using UI;
 using UnityEngine;
 
 namespace Game
@@ -31,6 +32,8 @@ namespace Game
                 case "RecoverObj":
                     Global.Hp.Value = Mathf.Min(Global.MaxHp.Value, Global.Hp.Value + 1);
                     AudioKit.PlaySound("RecoverHp");
+                    // 绿色飘字+1
+                    FloatTextController.Play(other.transform.position, "<color=green>+1</color>");
                     ObjectPool.Instance.Recycle(other.gameObject);
                     break;
             }
