@@ -57,6 +57,7 @@ public class Global : Architecture<Global>, ISaveWithPlayerPrefs
         
         // 能力重置
         Object.FindObjectOfType<SampleAbility>(true).Reset();
+        Interface.GetSystem<ExpUpgradeSystem>().Reset();
     }
 
     public static int ExpNextLevelNeed()

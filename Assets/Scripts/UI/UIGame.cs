@@ -1,4 +1,5 @@
 using Game;
+using Lyf.ObjectPool;
 using QFramework;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace UI
 		{
 			mData = uiData as UIGameData ?? new UIGameData();
 			// please add init code here
+			
+			ObjectPool.Instance.ClearAllPool(true);
 			
 			// 经验注册相关
 			Global.Exp.RegisterWithInitValue(exp =>

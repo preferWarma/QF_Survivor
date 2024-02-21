@@ -22,7 +22,7 @@ namespace Systems.ExpUpgrade
         private void AddAttackItem()
         {
             var lv1 = new ExpUpgradeItem()
-                .SetDescription("普攻攻击力+1")
+                .SetDescription("lv1: 普攻攻击力+1")
                 .SetOnUpgrade(item =>
                 {
                     Object.FindObjectOfType<SampleAbility>().Upgrade(1);
@@ -30,7 +30,7 @@ namespace Systems.ExpUpgrade
             ExpUpgradeItems.Add(lv1);
             
             var lv2 = new ExpUpgradeItem()
-                .SetDescription("普攻攻击力+1")
+                .SetDescription("lv2: 普攻攻击力+1")
                 .SetCondition(item => lv1.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
@@ -39,7 +39,7 @@ namespace Systems.ExpUpgrade
             ExpUpgradeItems.Add(lv2);
             
             var lv3 = new ExpUpgradeItem()
-                .SetDescription("普攻攻击力+1")
+                .SetDescription("lv3: 普攻攻击力+1")
                 .SetCondition(item => lv2.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
@@ -51,7 +51,7 @@ namespace Systems.ExpUpgrade
         private void AddFrequencyItem()
         {
             var lv1 = new ExpUpgradeItem()
-                .SetDescription("普攻频率+20%")
+                .SetDescription("lv1: 普攻频率+20%")
                 .SetOnUpgrade(item =>
                 {
                     Object.FindObjectOfType<SampleAbility>().Upgrade(2);
@@ -59,7 +59,7 @@ namespace Systems.ExpUpgrade
             ExpUpgradeItems.Add(lv1);
             
             var lv2 = new ExpUpgradeItem()
-                .SetDescription("普攻频率+20%")
+                .SetDescription("lv2: 普攻频率+20%")
                 .SetCondition(item => lv1.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
@@ -68,7 +68,7 @@ namespace Systems.ExpUpgrade
             ExpUpgradeItems.Add(lv2);
             
             var lv3 = new ExpUpgradeItem()
-                .SetDescription("普攻频率+%20")
+                .SetDescription("lv3: 普攻频率+%20")
                 .SetCondition(item => lv2.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
@@ -80,7 +80,7 @@ namespace Systems.ExpUpgrade
         private void AddRangeItem()
         {
             var lv1 = new ExpUpgradeItem()
-                .SetDescription("普攻范围+1")
+                .SetDescription("lv1: 普攻范围+1")
                 .SetOnUpgrade(item =>
                 {
                     Object.FindObjectOfType<SampleAbility>().Upgrade(3);
@@ -88,7 +88,7 @@ namespace Systems.ExpUpgrade
             ExpUpgradeItems.Add(lv1);
             
             var lv2 = new ExpUpgradeItem()
-                .SetDescription("普攻范围+1")
+                .SetDescription("lv2: 普攻范围+1")
                 .SetCondition(item => lv1.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
@@ -97,7 +97,7 @@ namespace Systems.ExpUpgrade
             ExpUpgradeItems.Add(lv2);
             
             var lv3 = new ExpUpgradeItem()
-                .SetDescription("普攻范围+1")
+                .SetDescription("lv3: 普攻范围+1")
                 .SetCondition(item => lv2.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
@@ -105,6 +105,14 @@ namespace Systems.ExpUpgrade
                 });
             ExpUpgradeItems.Add(lv3);
             
+        }
+        
+        public void Reset()
+        {
+            foreach (var item in ExpUpgradeItems)
+            {
+                item.SetType(ActionType.Doing);
+            }
         }
         
     }

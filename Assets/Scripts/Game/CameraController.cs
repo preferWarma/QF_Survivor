@@ -36,9 +36,9 @@ namespace Game
             _isShaking = true;
             var strength = shakeType switch
             {
-                ShakeType.Heavy => 0.4f,
-                ShakeType.Middle => 0.2f,
-                ShakeType.Light => 0.1f,
+                ShakeType.Heavy => 0.3f,
+                ShakeType.Middle => 0.15f,
+                ShakeType.Light => 0.05f,
                 _ => 0f
             };
 

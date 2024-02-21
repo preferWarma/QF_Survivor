@@ -13,7 +13,7 @@ namespace Game.PowerUpItem
 			{
 				// 爆炸
 				AudioKit.PlaySound("Bomb");
-				CameraController.Shake(ShakeType.Heavy);
+				CameraController.Shake(ShakeType.Middle);
 				foreach (var enemy in Global.Enemies)
 				{
 					enemy.GetHurt(enemy.maxHp, true);
