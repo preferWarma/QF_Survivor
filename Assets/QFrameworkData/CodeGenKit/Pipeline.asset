@@ -18,16 +18,12 @@ MonoBehaviour:
     GameObject: {fileID: 0}
     From: 0
     NameToFullName: []
-    BindInfos:
-    - TypeName: Transform
-      PathToRoot: FloatTextPoint
-      MemberName: FloatTextPoint
+    BindInfos: []
     ScriptsFolder: Assets/Scripts/Game
-    ClassName: Enemy
+    ClassName: EnemyGenerator
     Namespace: Game
     MainCode: "using UnityEngine;\r\nusing QFramework;\r\n\r\nnamespace Game\r\n{\r\n\tpublic
-      partial class Enemy : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
+      partial class EnemyGenerator : ViewController\r\n\t{\r\n\t\tvoid Start()\r\n\t\t{\r\n\t\t\t//
       Code Here\r\n\t\t}\r\n\t}\r\n}\r\n"
-    DesignerCode: "// Generate Id:a7cd95d3-c726-4f55-9d36-dc862e26eccf\r\nusing UnityEngine;\r\n\r\nnamespace
-      Game\r\n{\r\n\tpublic partial class Enemy\r\n\t{\r\n\r\n\t\tpublic Transform
-      FloatTextPoint;\r\n\r\n\t}\r\n}\r\n"
+    DesignerCode: "// Generate Id:fe8e3045-b568-4fab-9999-43ae1f63db68\r\nusing UnityEngine;\r\n\r\nnamespace
+      Game\r\n{\r\n\tpublic partial class EnemyGenerator\r\n\t{\r\n\r\n\t}\r\n}\r\n"

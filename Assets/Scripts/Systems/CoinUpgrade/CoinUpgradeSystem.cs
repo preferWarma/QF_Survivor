@@ -17,8 +17,6 @@ namespace Systems.CoinUpgrade
             AddMoneyItem();
             AddHpItem();
             
-            // SaveManager.Load(this, SaveType.PlayerPrefs);
-            // OnSystemChanged.Register(() => SaveManager.Save(this, SaveType.PlayerPrefs));
             // 改为统一注册的方式来加载和存储
             SaveManager.Instance.Register(this, SaveType.PlayerPrefs);
         }
@@ -33,7 +31,6 @@ namespace Systems.CoinUpgrade
                 {
                     Global.ExpDropRate.Value += 0.02f;
                     Global.Money.Value -= item.Cost;
-                    AudioKit.PlaySound("AbilityUp");
                 });
             CoinUpgradeItems.Add(lv1);
             
@@ -46,7 +43,6 @@ namespace Systems.CoinUpgrade
                 {
                     Global.ExpDropRate.Value += 0.03f;
                     Global.Money.Value -= item.Cost;
-                    AudioKit.PlaySound("AbilityUp");
                 });
             CoinUpgradeItems.Add(lv2);
             
@@ -59,7 +55,6 @@ namespace Systems.CoinUpgrade
                 {
                     Global.ExpDropRate.Value += 0.05f;
                     Global.Money.Value -= item.Cost;
-                    AudioKit.PlaySound("AbilityUp");
                 });
             CoinUpgradeItems.Add(lv3);
             
@@ -72,14 +67,13 @@ namespace Systems.CoinUpgrade
                 {
                     Global.ExpDropRate.Value += 0.1f;
                     Global.Money.Value -= item.Cost;
-                    AudioKit.PlaySound("AbilityUp");
                 });
             CoinUpgradeItems.Add(lv4);
         }
         
         private void AddMoneyItem()
         {
-            CoinUpgradeItems.Add(new CoinUpgradeItem()
+            var lv1 = new CoinUpgradeItem()
                 .SetKey("Btn_MoneyDropRateUp")
                 .SetDescription("($5)金币掉落率+2%")
                 .SetCost(5)
@@ -87,13 +81,49 @@ namespace Systems.CoinUpgrade
                 {
                     Global.MoneyDropRate.Value += 0.02f;
                     Global.Money.Value -= item.Cost;
-                    AudioKit.PlaySound("AbilityUp");
-                }));
+                });
+            CoinUpgradeItems.Add(lv1);
+            
+            var lv2 = new CoinUpgradeItem()
+                .SetKey("Btn_MoneyDropRateUp2")
+                .SetDescription("($10)金币掉落率+3%")
+                .SetCost(10)
+                .SetCondition(item => lv1.CurType == ActionType.Done)
+                .SetOnUpgrade(item =>
+                {
+                    Global.MoneyDropRate.Value += 0.03f;
+                    Global.Money.Value -= item.Cost;
+                });
+            CoinUpgradeItems.Add(lv2);
+            
+            var lv3 = new CoinUpgradeItem()
+                .SetKey("Btn_MoneyDropRateUp3")
+                .SetDescription("($20)金币掉落率+5%")
+                .SetCost(20)
+                .SetCondition(item => lv2.CurType == ActionType.Done)
+                .SetOnUpgrade(item =>
+                {
+                    Global.MoneyDropRate.Value += 0.05f;
+                    Global.Money.Value -= item.Cost;
+                });
+            CoinUpgradeItems.Add(lv3);
+            
+            var lv4 = new CoinUpgradeItem()
+                .SetKey("Btn_MoneyDropRateUp4")
+                .SetDescription("($50)金币掉落率+10%")
+                .SetCost(50)
+                .SetCondition(item => lv3.CurType == ActionType.Done)
+                .SetOnUpgrade(item =>
+                {
+                    Global.MoneyDropRate.Value += 0.1f;
+                    Global.Money.Value -= item.Cost;
+                });
+            CoinUpgradeItems.Add(lv4);
         }
         
         private void AddHpItem()
         {
-            CoinUpgradeItems.Add(new CoinUpgradeItem()
+            var lv1 = new CoinUpgradeItem()
                 .SetKey("Btn_MaxHpUp")
                 .SetDescription("($30)最大生命值+1")
                 .SetCost(30)
@@ -101,8 +131,33 @@ namespace Systems.CoinUpgrade
                 {
                     Global.MaxHp.Value++;
                     Global.Money.Value -= item.Cost;
-                    AudioKit.PlaySound("AbilityUp");
-                }));
+                });
+            CoinUpgradeItems.Add(lv1);
+            
+            var lv2 = new CoinUpgradeItem()
+                .SetKey("Btn_MaxHpUp2")
+                .SetDescription("($50)最大生命值+1")
+                .SetCost(50)
+                .SetCondition(item => lv1.CurType == ActionType.Done)
+                .SetOnUpgrade(item =>
+                {
+                    Global.MaxHp.Value += 1;
+                    Global.Money.Value -= item.Cost;
+                });
+            CoinUpgradeItems.Add(lv2);
+            
+            var lv3 = new CoinUpgradeItem()
+                .SetKey("Btn_MaxHpUp3")
+                .SetDescription("($100)最大生命值+1")
+                .SetCost(100)
+                .SetCondition(item => lv2.CurType == ActionType.Done)
+                .SetOnUpgrade(item =>
+                {
+                    Global.MaxHp.Value += 1;
+                    Global.Money.Value -= item.Cost;
+                });
+            CoinUpgradeItems.Add(lv3);
+            
         }
 
         #region 存储相关

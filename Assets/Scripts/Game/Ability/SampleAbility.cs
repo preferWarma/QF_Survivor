@@ -6,7 +6,7 @@ namespace Game.Ability
 {
 	public partial class SampleAbility : ViewController
 	{
-		[Tooltip("攻击范围")] public float attackRange = 3f;
+		[Tooltip("攻击范围")] public float attackRange = 3.5f;
 		[Tooltip("攻击力")] public int attackDamage = 1;
 		[Tooltip("攻击频率")] public float attackFrequency = 1.5f;
 		
@@ -28,27 +28,29 @@ namespace Game.Ability
 		}
 		
 		/// <summary>
-		/// 升级SampleAbility, type = 1表示升级攻击力和攻击范围, type = 2:表示升级攻击频率
+		/// 升级SampleAbility, type = 1表示升级攻击力, type = 2:表示升级攻击频率, type = 3:表示升级攻击范围
 		/// </summary>
-		public void Upgrade(int type = 1)
+		public void Upgrade(int type)
 		{
 			switch (type)
 			{
 				case 1:
-					attackRange += 1f;
 					attackDamage += 1;
 					break;
 				case 2:
 					attackFrequency *= 0.8f;
 					break;
+				case 3:
+					attackRange += 1;
+					break;
 			}
-			AudioKit.PlaySound("AbilityUp");
 		}
 
 		public void Reset()
 		{
 			attackRange = 3.5f;
 			attackDamage = 1;
+			attackFrequency = 1.5f;
 		}
 
 		private void OnDrawGizmos()

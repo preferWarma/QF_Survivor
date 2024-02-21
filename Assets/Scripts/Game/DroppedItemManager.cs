@@ -19,20 +19,24 @@ namespace Game
 		{
 			if (Random.Range(0, 1f) < Global.ExpDropRate.Value)
 			{
-				GenerateObj(MoneyObj.gameObject, position);
-			}
-			if (Random.Range(0, 1f) < Global.MoneyDropRate.Value)
-			{
 				GenerateObj(ExpObj.gameObject, position);
 			}
+			
+			if (Random.Range(0, 1f) < Global.MoneyDropRate.Value)
+			{
+				GenerateObj(MoneyObj.gameObject, position);
+			}
+			
 			if (Random.Range(0, 1f) < hpItemDropRate)
 			{
 				GenerateObj(RecoverHpObj.gameObject, position);
 			}
+			
 			if (Random.Range(0, 1f) < bombItemDropRate)
 			{
 				GenerateObj(BombObj.gameObject, position);
 			}
+			
 			if (Random.Range(0, 1f) < autoCollectItemDropRate)
 			{
 				GenerateObj(AutoCollectObj.gameObject, position);

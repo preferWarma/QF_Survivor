@@ -20,6 +20,7 @@ namespace UI
 				itemBtnObj.onClick.AddListener(() =>
 				{
 					upgradeItem.Upgrade();
+					AudioKit.PlaySound("AbilityUp");
 				});
 				itemBtnObj.gameObject.Show();
 				
@@ -58,7 +59,7 @@ namespace UI
 		}
 
 		// 刷新升级按钮的显示与隐藏, 实现依赖关系
-		public void RefreshUpgradeBtn()
+		private void RefreshUpgradeBtn()
 		{
 			foreach (var item in this.GetSystem<CoinUpgradeSystem>().CoinUpgradeItems)
 			{

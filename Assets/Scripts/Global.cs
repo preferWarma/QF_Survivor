@@ -4,6 +4,7 @@ using Game.Ability;
 using Lyf.SaveSystem;
 using QFramework;
 using Systems.CoinUpgrade;
+using Systems.ExpUpgrade;
 using UnityEditor;
 using UnityEngine;
 using SaveType = Lyf.SaveSystem.SaveType;
@@ -66,6 +67,7 @@ public class Global : Architecture<Global>, ISaveWithPlayerPrefs
     protected override void Init()
     {
         RegisterSystem(new CoinUpgradeSystem());
+        RegisterSystem(new ExpUpgradeSystem());
         
         // 注册存储系统
         SaveManager.Instance.Register(this, SaveType.PlayerPrefs);

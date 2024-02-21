@@ -1,5 +1,4 @@
 using Game;
-using Game.Ability;
 using QFramework;
 using UnityEngine;
 
@@ -34,9 +33,9 @@ namespace UI
 
 			Global.Level.Register(lv =>
 			{
-				Time.timeScale = 0f;
+				ExpUpgradePanel.Show();
+				Time.timeScale = 0;
 				AudioKit.PlaySound("LevelUp");
-				UpgradeBtns.Show();
 
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
@@ -83,21 +82,6 @@ namespace UI
 				HpText.text = hp > 1 ? $"生命值: <color=green>{hp}</color>/{Global.MaxHp}" 
 					: $"生命值: <color=red>{hp}</color>/{Global.MaxHp}";
 			}).UnRegisterWhenGameObjectDestroyed(this);
-			
-			// 升级按钮绑定监听
-			SimpleAbility_Power.onClick.AddListener(() =>
-			{
-				FindObjectOfType<SampleAbility>().Upgrade(1);
-				Time.timeScale = 1f;
-				UpgradeBtns.Hide();
-			});
-			
-			SimpleAbility_Frequency.onClick.AddListener(() =>
-			{
-				FindObjectOfType<SampleAbility>().Upgrade(2);
-				Time.timeScale = 1f;
-				UpgradeBtns.Hide();
-			});
 			
 			// Action事件添加
 			ActionKit.OnUpdate.Register(() =>

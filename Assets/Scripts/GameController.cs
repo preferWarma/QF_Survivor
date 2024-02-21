@@ -1,4 +1,5 @@
-﻿using Lyf.SaveSystem;
+﻿using System;
+using Lyf.SaveSystem;
 using Lyf.Utils.Singleton;
 using QFramework;
 using UnityEngine;
@@ -18,6 +19,12 @@ public class GameController : GlobalSingleton<GameController>
         // 加载永久数据
         SaveManager.Instance.LoadAllRegister(SaveType.PlayerPrefs);
     }
+
+    private void Start()
+    {
+        UIRoot.Instance.SetResolution(1920, 1080, 0.5f);
+    }
+
     private void OnApplicationQuit() // 退出游戏时保存永久数据
     {
         Debug.LogWarning("游戏结束");

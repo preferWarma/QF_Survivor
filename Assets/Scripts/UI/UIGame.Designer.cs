@@ -5,7 +5,7 @@ using QFramework;
 
 namespace UI
 {
-	// Generate Id:af948dda-0502-434a-97ca-894c5cec9be8
+	// Generate Id:6d278b2c-b8ee-4ae0-a7f0-df29fd6eff9f
 	public partial class UIGame
 	{
 		public const string Name = "UIGame";
@@ -23,11 +23,7 @@ namespace UI
 		[SerializeField]
 		public UnityEngine.UI.Text MoneyText;
 		[SerializeField]
-		public RectTransform UpgradeBtns;
-		[SerializeField]
-		public UnityEngine.UI.Button SimpleAbility_Frequency;
-		[SerializeField]
-		public UnityEngine.UI.Button SimpleAbility_Power;
+		public ExpUpgradePanel ExpUpgradePanel;
 		
 		private UIGameData mPrivateData = null;
 		
@@ -39,9 +35,7 @@ namespace UI
 			TimeText = null;
 			EnemyCountText = null;
 			MoneyText = null;
-			UpgradeBtns = null;
-			SimpleAbility_Frequency = null;
-			SimpleAbility_Power = null;
+			ExpUpgradePanel = null;
 			
 			mData = null;
 		}
