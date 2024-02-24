@@ -1,4 +1,5 @@
 using System;
+using Game.EnemyDesign;
 using UnityEngine;
 using QFramework;
 using Object = UnityEngine.Object;
@@ -31,15 +32,18 @@ namespace Game.Ability
 
 		private void Throw()
 		{
+			// 生成投掷物
 			ThrowObj.Instantiate()
 				.Show()
 				.Position(transform.position)
 				.Self(rd =>
 			{
+				// 随机角度抛出
 				var randomX = RandomUtility.Choose(-8, -5, 5, 8);
 				var randomY = RandomUtility.Choose(5, 8);
 				rd.velocity = new Vector2(randomX, randomY);
 				
+				// 检测碰撞
 				rd.OnTriggerEnter2DEvent(col =>
 				{
 					if (col.CompareTag("Enemy"))
@@ -48,6 +52,7 @@ namespace Game.Ability
 					}
 				}).UnRegisterWhenGameObjectDestroyed(rd);
 
+				// 超出屏幕销毁
 				rd.OnUpdate(() =>
 				{
 					var viewPos = _mainCamera.WorldToViewportPoint(rd.position);

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Game;
 using Game.Ability;
+using Game.EnemyDesign;
 using Lyf.SaveSystem;
 using QFramework;
 using Systems.CoinUpgrade;

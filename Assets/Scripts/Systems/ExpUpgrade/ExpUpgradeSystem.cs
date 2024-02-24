@@ -22,10 +22,10 @@ namespace Systems.ExpUpgrade
         private void AddAttackItem()
         {
             var lv1 = new ExpUpgradeItem()
-                .SetDescription("lv1: 普攻攻击力+1")
+                .SetDescription("lv1: 普攻攻击力+0.5")
                 .SetOnUpgrade(item =>
                 {
-                    Object.FindObjectOfType<SampleAbility>().Upgrade(1);
+                    Object.FindObjectOfType<SampleAbility>().Upgrade(1, 0.5f);
                 });
             ExpUpgradeItems.Add(lv1);
             
@@ -34,16 +34,16 @@ namespace Systems.ExpUpgrade
                 .SetCondition(item => lv1.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
-                    Object.FindObjectOfType<SampleAbility>().Upgrade(1);
+                    Object.FindObjectOfType<SampleAbility>().Upgrade(1, 1f);
                 });
             ExpUpgradeItems.Add(lv2);
             
             var lv3 = new ExpUpgradeItem()
-                .SetDescription("lv3: 普攻攻击力+1")
+                .SetDescription("lv3: 普攻攻击力+1.5")
                 .SetCondition(item => lv2.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
-                    Object.FindObjectOfType<SampleAbility>().Upgrade(1);
+                    Object.FindObjectOfType<SampleAbility>().Upgrade(1, 1.5f);
                 });
             ExpUpgradeItems.Add(lv3);
         }
@@ -80,10 +80,10 @@ namespace Systems.ExpUpgrade
         private void AddRangeItem()
         {
             var lv1 = new ExpUpgradeItem()
-                .SetDescription("lv1: 普攻范围+1")
+                .SetDescription("lv1: 普攻范围+0.5")
                 .SetOnUpgrade(item =>
                 {
-                    Object.FindObjectOfType<SampleAbility>().Upgrade(3);
+                    Object.FindObjectOfType<SampleAbility>().Upgrade(3, 0.5f);
                 });
             ExpUpgradeItems.Add(lv1);
             
@@ -92,16 +92,16 @@ namespace Systems.ExpUpgrade
                 .SetCondition(item => lv1.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
-                    Object.FindObjectOfType<SampleAbility>().Upgrade(3);
+                    Object.FindObjectOfType<SampleAbility>().Upgrade(3, 1f);
                 });
             ExpUpgradeItems.Add(lv2);
             
             var lv3 = new ExpUpgradeItem()
-                .SetDescription("lv3: 普攻范围+1")
+                .SetDescription("lv3: 普攻范围+1.5")
                 .SetCondition(item => lv2.CurType == ActionType.Done)
                 .SetOnUpgrade(item =>
                 {
-                    Object.FindObjectOfType<SampleAbility>().Upgrade(3);
+                    Object.FindObjectOfType<SampleAbility>().Upgrade(3, 1.5f);
                 });
             ExpUpgradeItems.Add(lv3);
             

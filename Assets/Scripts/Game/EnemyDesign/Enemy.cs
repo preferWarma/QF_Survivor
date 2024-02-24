@@ -1,29 +1,28 @@
-using Lyf.ObjectPool;
 using QFramework;
 using UI;
 using UnityEngine;
 
-namespace Game
+namespace Game.EnemyDesign
 {
 	public partial class Enemy : ViewController
 	{
-		public float speed = 3f;
-		public int maxHp = 3;
+		public float moveSpeed = 3f;
+		public float maxHp = 3;
 
-		private int _hp;
+		private float _hp;
 		private bool _isHurt;	// 是否处于受击状态
 		
 		// 引用部分
-		private Player _player;
+		protected Player Player;
 		private SpriteRenderer _spriteRenderer;
 
-		private void Start()
+		protected virtual void Start()
 		{
 			// 初始化属性
 			_hp = maxHp;
 			
 			// 获取引用
-			_player = FindObjectOfType<Player>();
+			Player = FindObjectOfType<Player>();
 			_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 			
 			// 添加到全局敌人列表
@@ -31,16 +30,16 @@ namespace Game
 			Global.EnemyCount.Value = Global.Enemies.Count;
 		}
 
-		private void Update()
+		protected virtual void Update()
 		{
 			MoveToPlayer();
 		}
 		
-		private void MoveToPlayer()
+		protected void MoveToPlayer()
 		{
-			if (_player == null) return;
-			var direction = (_player.transform.position - transform.position).normalized;
-			transform.Translate(direction * (speed * Time.deltaTime));
+			if (Player == null) return;
+			var direction = (Player.transform.position - transform.position).normalized;
+			transform.Translate(direction * (moveSpeed * Time.deltaTime));
 		}
 
 		/// <summary>
@@ -48,7 +47,7 @@ namespace Game
 		/// </summary>
 		/// <param name="damage">伤害值</param>
 		/// <param name="force">是否忽略受伤无敌帧并强制造成伤害</param>
-		public void GetHurt(int damage = 1, bool force = false)
+		public void GetHurt(float damage = 1f, bool force = false)
 		{
 			if (_isHurt && !force) return;	// 给一个受击的无敌帧用于显示受击动画
 			
@@ -78,8 +77,8 @@ namespace Game
 		
 		public float DistanceToPlayer()
 		{
-			if (_player == null) return float.MaxValue;
-			return (transform.position - _player.transform.position).magnitude;
+			if (Player == null) return float.MaxValue;
+			return (transform.position - Player.transform.position).magnitude;
 			
 		}
 		

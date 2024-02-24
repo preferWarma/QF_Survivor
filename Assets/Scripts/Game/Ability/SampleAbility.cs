@@ -7,7 +7,7 @@ namespace Game.Ability
 	public partial class SampleAbility : ViewController
 	{
 		[Tooltip("攻击范围")] public float attackRange = 3.5f;
-		[Tooltip("攻击力")] public int attackDamage = 1;
+		[Tooltip("攻击力")] public float attackDamage = 1f;
 		[Tooltip("攻击频率")] public float attackFrequency = 1.5f;
 		
 		private float _timer;
@@ -30,18 +30,18 @@ namespace Game.Ability
 		/// <summary>
 		/// 升级SampleAbility, type = 1表示升级攻击力, type = 2:表示升级攻击频率, type = 3:表示升级攻击范围
 		/// </summary>
-		public void Upgrade(int type)
+		public void Upgrade(int type, float addValue = 0.5f)
 		{
 			switch (type)
 			{
 				case 1:
-					attackDamage += 1;
+					attackDamage += addValue;
 					break;
 				case 2:
 					attackFrequency *= 0.8f;
 					break;
 				case 3:
-					attackRange += 1;
+					attackRange += addValue;
 					break;
 			}
 		}

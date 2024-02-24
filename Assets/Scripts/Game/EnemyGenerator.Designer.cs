@@ -1,4 +1,4 @@
-// Generate Id:fe8e3045-b568-4fab-9999-43ae1f63db68
+// Generate Id:b93b8f7b-81c9-4dea-b4d4-6d11c4763d8f
 using UnityEngine;
 
 namespace Game

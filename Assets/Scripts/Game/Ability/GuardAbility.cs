@@ -1,3 +1,4 @@
+using Game.EnemyDesign;
 using UnityEngine;
 using QFramework;
 
@@ -7,7 +8,7 @@ namespace Game.Ability
 	{
 		[Tooltip("旋转半径")] public float radius = 5f;
 		[Tooltip("旋转速度")] public float speed = 2f;
-		[Tooltip("伤害")] public int damage = 2;
+		[Tooltip("伤害")] public float damage = 2f;
 		
 		private Transform _target;
 
