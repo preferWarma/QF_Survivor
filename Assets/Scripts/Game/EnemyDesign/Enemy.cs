@@ -71,8 +71,8 @@ namespace Game.EnemyDesign
 					_isHurt = false;
 				}).Start(this);
 			
-			// 显示伤害飘字
-			FloatTextController.Play(FloatTextPoint.position, damage.ToString());
+			// 显示伤害飘字,保留一位小数
+			FloatTextController.Play(FloatTextPoint.position, damage.ToString("F1"));
 		}
 		
 		public float DistanceToPlayer()
@@ -81,7 +81,15 @@ namespace Game.EnemyDesign
 			return (transform.position - Player.transform.position).magnitude;
 			
 		}
-		
+
+		// 设置生命和速度倍率
+		public void SetHpAndSpeedScale(float hpScale, float speedScale)
+		{
+			maxHp *= hpScale;
+			moveSpeed *= speedScale;
+			_hp = maxHp;
+		}
+
 		private void OnDestroy()
 		{
 			// 从全局敌人列表中移除

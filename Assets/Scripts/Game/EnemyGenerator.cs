@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using Game.EnemyDesign;
 using UnityEngine;
 using QFramework;
 using Random = UnityEngine.Random;
@@ -8,7 +8,7 @@ namespace Game
 {
 	public partial class EnemyGenerator : ViewController
 	{
-		[Tooltip("敌人波次")] public List<EnemyWave> enemyWaves = new();
+		[Tooltip("敌人波次")] public WaveConfig enemyWaveConfig;
 		[Tooltip("敌人生成距离")] public float enemyGenerateDistance = 10f;
 		
 		// 属性部分
@@ -24,7 +24,7 @@ namespace Game
 		private void Start()
 		{
 			_player = FindObjectOfType<Player>();
-			foreach (var enemyWave in enemyWaves)
+			foreach (var enemyWave in enemyWaveConfig.enemyWaves)
 			{
 				_enemyWavesQueue.Enqueue(enemyWave);
 			}
@@ -58,20 +58,11 @@ namespace Game
 			var direction = new Vector3(Mathf.Cos(randomRadius), Mathf.Sin(randomRadius), 0f);	// 根据角度计算方向
 			var generatePosition = _player.transform.position +  direction * enemyGenerateDistance;	// 计算生成位置
 
-			Instantiate(CurrentEnemyWave.enemyPrefab)
+			var enemy = Instantiate(CurrentEnemyWave.enemyPrefab)
 				.Position(generatePosition)
-				.Show();
+				.Show()
+				.GetComponent<Enemy>();
+			enemy.SetHpAndSpeedScale(CurrentEnemyWave.hpScale, CurrentEnemyWave.speedScale);
 		}
-	}
-
-	/// <summary>
-	/// 敌人波次
-	/// </summary>
-	[Serializable]
-	public class EnemyWave
-	{
-		[Tooltip("当前波次敌人生成CD")] public float enemyGenerateCd = 1f;
-		[Tooltip("当前波次敌人Prefab")] public GameObject enemyPrefab;
-		[Tooltip("当前波次持续时间")] public float waveLastTime = 10f;
 	}
 }
