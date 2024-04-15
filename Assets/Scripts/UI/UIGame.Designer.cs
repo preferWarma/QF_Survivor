@@ -5,17 +5,13 @@ using QFramework;
 
 namespace UI
 {
-	// Generate Id:6d278b2c-b8ee-4ae0-a7f0-df29fd6eff9f
+	// Generate Id:9588d238-8568-4a73-9143-4ecf07dc2fb4
 	public partial class UIGame
 	{
 		public const string Name = "UIGame";
 		
 		[SerializeField]
-		public UnityEngine.UI.Text HpText;
-		[SerializeField]
 		public UnityEngine.UI.Text LvelText;
-		[SerializeField]
-		public UnityEngine.UI.Text ExpText;
 		[SerializeField]
 		public UnityEngine.UI.Text TimeText;
 		[SerializeField]
@@ -24,18 +20,19 @@ namespace UI
 		public UnityEngine.UI.Text MoneyText;
 		[SerializeField]
 		public ExpUpgradePanel ExpUpgradePanel;
+		[SerializeField]
+		public UnityEngine.UI.Image ExpValue;
 		
 		private UIGameData mPrivateData = null;
 		
 		protected override void ClearUIComponents()
 		{
-			HpText = null;
 			LvelText = null;
-			ExpText = null;
 			TimeText = null;
 			EnemyCountText = null;
 			MoneyText = null;
 			ExpUpgradePanel = null;
+			ExpValue = null;
 			
 			mData = null;
 		}

@@ -1,10 +1,12 @@
-// Generate Id:60286f1c-5fba-48b1-8a94-bb3f12e46fad
+// Generate Id:3a2f6038-07ee-458e-aa5c-f9b329424968
 using UnityEngine;
 
 namespace Game
 {
 	public partial class Player
 	{
+
+		public UnityEngine.UI.Image HpValue;
 
 	}
 }

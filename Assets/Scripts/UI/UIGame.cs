@@ -25,7 +25,7 @@ namespace UI
 					Global.Exp.Value -= Global.ExpNextLevelNeed();
 					Global.Level.Value++;
 				}
-				ExpText.text = $"经验值: {exp}/{Global.ExpNextLevelNeed()}";
+				ExpValue.fillAmount = (float)exp / Global.ExpNextLevelNeed();	// 填充经验条
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
 			// 等级注册相关
@@ -77,13 +77,6 @@ namespace UI
 			{
 				// 使用富文本
 				MoneyText.text = $"金币: <color=yellow>{money}</color>";
-			}).UnRegisterWhenGameObjectDestroyed(this);
-			
-			// 玩家生命值注册相关
-			Global.Hp.RegisterWithInitValue(hp =>
-			{
-				HpText.text = hp > 1 ? $"生命值: <color=green>{hp}</color>/{Global.MaxHp}" 
-					: $"生命值: <color=red>{hp}</color>/{Global.MaxHp}";
 			}).UnRegisterWhenGameObjectDestroyed(this);
 			
 			// Action事件添加

@@ -43,8 +43,7 @@ namespace Game
             };
 
             // 参数分别为：震动时间，震动幅度，震动次数，震动角度，是否随机角度，是否把初始位置作为震动的一部分，震动的随机性(枚举)
-            Camera.transform.DOShakePosition(_instance.shakeTime, strength, 100, 180, false, true,
-                ShakeRandomnessMode.Harmonic)
+            Camera.transform.DOShakePosition(_instance.shakeTime, strength, 100, 180)
                 .OnComplete(() => { _isShaking = false;});
         }
     }

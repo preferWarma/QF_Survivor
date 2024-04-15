@@ -14,6 +14,16 @@ namespace Game
 			_rigidbody2D = GetComponent<Rigidbody2D>();
 			
 			Global.Hp.Value = Global.MaxHp.Value;
+			
+			Global.Hp.RegisterWithInitValue(value =>
+			{
+				HpValue.fillAmount = (float)value / Global.MaxHp.Value;
+			}).UnRegisterWhenGameObjectDestroyed(this);
+			
+			Global.MaxHp.RegisterWithInitValue(value =>
+			{
+				HpValue.fillAmount = (float)Global.Hp.Value / value;
+			}).UnRegisterWhenGameObjectDestroyed(this);
 		}
 
 		private void Update()

@@ -8,6 +8,7 @@ namespace Game.EnemyDesign
 	{
 		public float moveSpeed = 3f;
 		public float maxHp = 3;
+		public Color dissolveColor = Color.yellow;
 
 		private float _hp;
 		private bool _isHurt;	// 是否处于受击状态
@@ -57,7 +58,9 @@ namespace Game.EnemyDesign
 			{
 				// 掉落物品
 				DroppedItemManager.Instance.GenerateItem(transform.position);
-				// 死亡
+				// 播放死亡特效
+				FxController.Play(_spriteRenderer, dissolveColor);
+				// 销毁
 				Destroy(gameObject);
 			}
 			
